@@ -36,7 +36,7 @@ while True:
             todos = functions.get_todos()
             new_todo = values['todo'] + '\n'
             if new_todo.strip() == "":
-                sg.popup("Empty box. Add a task.")
+                sg.popup("Empty field. Add a task.", icon='favicon.ico')
             else:
                 todos.append(new_todo)
                 functions.write_todos(todos)
@@ -54,7 +54,7 @@ while True:
                 window['todos'].update(values=todos)
                 window['todo'].update(value='')
             except IndexError:
-                sg.popup("Select a task to edit.")
+                sg.popup("Select a task to update.", icon='favicon.ico')
 
         case 'Complete':
             try:
@@ -65,13 +65,13 @@ while True:
                 window['todos'].update(values=todos)
                 window['todo'].update(value='')
             except IndexError:
-                sg.popup("Select a task to complete.")
+                sg.popup("Select a task to complete.", icon='favicon.ico')
 
         case 'todos':
             try:
                 window['todo'].update(value=values['todos'][0])
             except:
-                sg.popup("Empty box. Add an item to edit.")
+                sg.popup("Add an item to update.", icon='favicon.ico')
 
         case 'Exit':
             break
