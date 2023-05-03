@@ -15,7 +15,7 @@ input_box = sg.InputText(tooltip="Enter Tasks", key='todo')
 add_button = sg.Button("Add Task")
 display_list = sg.Listbox(values=functions.get_todos(), key='todos',
                           enable_events=True, size=[44,10])
-edit_button = sg.Button("Edit Task")
+edit_button = sg.Button("Update")
 complete_button = sg.Button('Complete')
 exit_button = sg.Button('Exit')
 
@@ -35,12 +35,15 @@ while True:
         case 'Add Task':
             todos = functions.get_todos()
             new_todo = values['todo'] + '\n'
-            todos.append(new_todo)
-            functions.write_todos(todos)
-            window['todos'].update(todos)
-            window['todo'].update(value='')
+            if new_todo.strip() == "":
+                sg.popup("Empty box. Add a task.")
+            else:
+                todos.append(new_todo)
+                functions.write_todos(todos)
+                window['todos'].update(todos)
+                window['todo'].update(value='')
 
-        case 'Edit Task':
+        case 'Update':
             try:
                 todo_edit = values['todos'][0]
                 new_todo = values['todo']
