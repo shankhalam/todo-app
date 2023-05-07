@@ -18,6 +18,7 @@ display_list = sg.Listbox(values=functions.get_todos(), key='todos',
 edit_button = sg.Button("Update")
 complete_button = sg.Button('Complete')
 exit_button = sg.Button('Exit')
+label_ver = sg.Text("Version: 1.0.1", font=('Arial', 10))
 
 window = sg.Window('ToDo App',
                    icon='favicon.ico',
@@ -25,7 +26,8 @@ window = sg.Window('ToDo App',
                    layout=[[label],
                            [input_box, add_button],
                            [display_list, edit_button, complete_button],
-                           [exit_button, clock]],
+                           [exit_button, clock],
+                           [label_ver]],
                    font=("Helvetica",14))
 
 while True:
